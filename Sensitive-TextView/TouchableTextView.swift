@@ -10,6 +10,7 @@ import UIKit
 
 class TouchableTextView: UITextView {
 
+    /// 指がタッチパネルに触れながら移動させるとコールされる
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         // タッチ位置を取得
@@ -30,6 +31,13 @@ class TouchableTextView: UITextView {
         // 非表示領域を適用
         self.textContainer.exclusionPaths = [path]
 
-    }    
+    }
+    
+    /// 指がタッチパネルから離れるタイミングでコールされる
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.textContainer.exclusionPaths = []
+        
+    }
     
 }
